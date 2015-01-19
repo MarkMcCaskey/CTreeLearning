@@ -29,6 +29,7 @@ int main( void );
 struct tree* generateTree( void );
 int* treeToArray( struct tree * );
 void insert( struct tree*, int );
+void deleteTree( struct tree* );
 
 
 int main( void )
@@ -43,8 +44,8 @@ int main( void )
 		printf( "%d ", *(array + i) );
 	}
 	
+	deleteTree( t );
 	
-	//note to self: add tree deleting code later
 	exit( EXIT_SUCCESS );
 }
 
@@ -138,4 +139,16 @@ int* treeToArray( struct tree * t )
 	
 	
 	return ip;
+}
+
+void deleteTree( struct tree* t )
+{
+	if( t->right != NULL )
+	{
+		deleteTree( t->right );
+	} else if( t->left != NULL )
+	{
+		deleteTree( t->left );
+	} 
+	free( t );
 }
