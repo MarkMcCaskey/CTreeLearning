@@ -146,7 +146,8 @@ void deleteTree( struct tree* t )
 	if( t->right != NULL )
 	{
 		deleteTree( t->right );
-	} else if( t->left != NULL )
+	} 
+	if( t->left != NULL )
 	{
 		deleteTree( t->left );
 	} 
