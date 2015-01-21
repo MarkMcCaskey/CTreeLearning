@@ -35,16 +35,19 @@ void deleteTree( struct tree* );
 int main( void )
 {
 	srandom( time( NULL ) ); //seed the random number generator with the time
-	struct tree* t = generateTree();
-	int* array = treeToArray( t );
+	struct tree* t = generateTree(); //create new tree with random numbers
+	int* array = treeToArray( t ); //change tree into array and store it in array
 	
+	//loop through all elements in array and print them
 	int i;
 	for( i = 0; i < TREE_SIZE; ++i )
 	{
 		printf( "%d ", *(array + i) );
 	}
 	
-	deleteTree( t );
+	//free allocated memory
+	deleteTree( t ); //recursively free nodes in tree
+	free( array ); //free entire block allocated for array
 	
 	exit( EXIT_SUCCESS );
 }
@@ -56,6 +59,7 @@ struct tree* generateTree( void )
 	//check for proper allocation
 	if( t == NULL )
 	{
+		//report error and terminate program if memory cannot be allocated
 		fprintf( stderr, "Failed to allocate memory for root node.\n" );
 		exit( EXIT_FAILURE );
 	}
@@ -137,19 +141,27 @@ int* treeToArray( struct tree * t )
 	 * or by using array[offset] = value;
 	 */
 	
-	
+	//return pointer to block of memory allocated earlier in function
 	return ip;
 }
 
+/* Recursively free all nodes in tree
+ *
+ * This function has no return value, it mutates the data at the location
+ * specified by the pointer struct tree* t
+ */
 void deleteTree( struct tree* t )
 {
+	//search right until NULL is found
 	if( t->right != NULL )
 	{
 		deleteTree( t->right );
 	} 
+	//search left until NULL is found
 	if( t->left != NULL )
 	{
 		deleteTree( t->left );
 	} 
+	//once both right and left are NULL delete node
 	free( t );
 }
