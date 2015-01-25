@@ -11,10 +11,13 @@
 struct tree
 {
 	struct tree* left;
-	int value;
 	struct tree* right;
+	int value;
 };
 /*
+ * Structs are like arrays but with arbitrary types
+ * Elements are laid out in order in memory
+a*
  * access struct elements with:
  * .  normal
  * -> pointer
@@ -37,6 +40,10 @@ int main( void )
 	srandom( time( NULL ) ); //seed the random number generator with the time
 	struct tree* t = generateTree(); //create new tree with random numbers
 	int* array = treeToArray( t ); //change tree into array and store it in array
+	
+	while( 1 )
+	{
+	}
 	
 	//loop through all elements in array and print them
 	int i;
