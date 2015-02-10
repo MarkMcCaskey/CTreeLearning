@@ -41,10 +41,6 @@ int main( void )
 	struct tree* t = generateTree(); //create new tree with random numbers
 	int* array = treeToArray( t ); //change tree into array and store it in array
 	
-	while( 1 )
-	{
-	}
-	
 	//loop through all elements in array and print them
 	int i;
 	for( i = 0; i < TREE_SIZE; ++i )
