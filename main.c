@@ -137,11 +137,10 @@ int* treeToArray( struct tree * t )
 	 */
 	
 	int* ip = (int *) malloc( sizeof( int ) * TREE_SIZE );
-	int array = *ip;
 	
 	/*
 	 * add elements to array either by using *(ip + offset) = value;
-	 * or by using array[offset] = value;
+	 * or by using ip[offset] = value;
 	 */
 	
 	//return pointer to block of memory allocated earlier in function
